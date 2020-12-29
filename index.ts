@@ -17,104 +17,109 @@
 
 import * as fs from 'fs';
 
-let byVerse = {}
-let byTopic = {}
+class TopicVerse {
+    topic: string = ''
+    verse: number = 0
+    
+    constructor(topic:string,verse:string) {
+        this.topic = topic;
+        this.verse = Number(verse);
+    }
+}
 
-// Get list of input files
-fs.readdirSync('./suttas').forEach(fileName=>{
-    const sutta = fileName.split('.')[0]
+class TopicRange {
+    topic: string = ''
+    verseStart: number = 0
+    verseEnd: number = 0
 
-    // Filter out 
-    fs.readFileSync(`./suttas/${fileName}`,'utf8')
-        .split("\n")
-        .forEach(line=>{
-            processSuttaLine(sutta,line.trim())
-    })
+    constructor(topic:string,range:string) {
+        this.topic = topic
+        let pieces = range.split('-')
+        this.verseStart = Number(pieces[0])
+        this.verseEnd = Number(pieces[1])
+    }
+}
+
+class Sutta {
+    volume:string = ''
+    sutta:Number = 0
+    titlePali:string = ''
+    titleEnglish: string = ''
+    location:string = ''
+    topicsByRange: Array<TopicRange> = []
+    topicsByVerse: Array<TopicVerse> = []
+
+    constructor(sutta:string) {
+        const pieces = sutta.split('-')
+        this.volume = pieces[0]
+        this.sutta = Number(pieces[1])
+    }
+}
+
+let suttas = {}
+
+/**
+ * Process inputs and populate global-scoped list of suttas
+ */
+fs.readdirSync('./suttas')
+    .filter(fileName=>fileName.endsWith('.csv'))
+    .forEach(fileName=>{
+        const suttaId:string = fileName.split('.')[0];
+        if(!(suttaId in suttas)) {
+            suttas[suttaId] = new Sutta(suttaId) 
+        }
+        let sutta = suttas[suttaId]
+
+        fs.readFileSync(`./suttas/${fileName}`,'utf8')
+            .replace(/\r/g,'')
+            .split("\n")
+            .forEach(line=>{
+                if(!addedTitleOrLocation(sutta,line.trim()) ) {
+                    processSuttaLine(sutta,line.trim())
+                }
+            })
 })
 
-printByVerse();
-printByTopic();
-console.log(byVerse)
-process.exit(0);
-// ------------------------
+fs.writeFileSync('./debug/suttas.json',JSON.stringify(suttas,null,4))
 
+function addedTitleOrLocation(sutta:Sutta,line:string) {
+    if(line.startsWith('!Title')) {
+        const [ pali, english ] = line.replace('!Title','').split(',')
+        sutta.titlePali = pali.trim()
+        sutta.titleEnglish = english.trim()
+        return true;
+    }
+    if(line.startsWith('!Location')) {
+        sutta.location = line.replace('!Location','').trim();
+        return true;
+    }
+    return false;
+}
 
-function processSuttaLine(sutta,line) {
-    let verses = []
-    let topics = []
+function processSuttaLine(sutta:Sutta,line:string) {
+    if(line.length===0 || line.startsWith('#')) {
+        return;
+    }
+
+    let verses:Array<string> = []
+    let ranges:Array<string> = []
+    let topics:Array<string> = []
     line.split(',').filter(item=>item.length>0).forEach(item=>{
-        if(item.match(/^[1-9]+\-[1-9]+$/)) {
-            verses.push(...expandVerseRange(item))
+        if(item.match(/^\d+\-\d+$/)) {
+            ranges.push(item)
+            return;
         }
-        else if(item.match(/^[1-9]/)) {
-            verses.push(Number(item));
+        if(item.match(/^\d+$/)) {
+            verses.push(item);
+            return;
         }
         else {
             topics.push(item);
         }
     })
 
-    verses.forEach(verse=>{
-        topics.forEach(topic=>{
-            const combination = `${sutta}:${verse}`
-            addByTopic(combination,topic)
-            addByVerse(combination,topic) 
-        })
+    topics.forEach(topic=>{
+        verses.forEach(verse=>sutta.topicsByVerse.push(new TopicVerse(topic,verse)))
+        ranges.forEach(range=>sutta.topicsByRange.push(new TopicRange(topic,range)))
     })
-}
-
-function expandVerseRange(item) {
-    let verses = []
-    const [ start, end ] = item.split('-')
-    let idx = Number(start)
-    // FIXME: Bad data will create an endless loop here
-    while(idx <= Number(end)) {
-        console.log(start,end,idx)
-        verses.push(idx)
-        idx++
-    }
-    return verses;
-}
-
-function addByTopic(combination,topic) {
-    if(!(topic in byTopic)) {
-        byTopic[topic] = []
-    }
-    byTopic[topic].push(combination)
-}
-
-function addByVerse(combination,topic) {
-    if(!(combination in byVerse)) {
-        byVerse[combination] = []
-    }
-    byVerse[combination].push(topic)
-}
-
-function printByTopic() {
-    let text = []
-    Object.keys(byTopic)
-        .sort((a,b)=>a>b ? 1 : -1)
-        .forEach(topic=>{
-            text.push(topic);
-            text.push(...byTopic[topic].map(verse=>'   '+verse))
-            text.push()
-        })
-
-    fs.writeFileSync('./output/byTopic.txt',text.join("\n"))
-}
-
-function printByVerse() {
-    let text = []
-    Object.keys(byVerse)
-        .sort((a,b)=>{
-            const aN = Number(a.split(':')[1]);
-            const bN = Number(b.split(':')[1]);
-            return aN>bN ? 1 : -1
-        })
-        .forEach(verse=>{
-            text.push(verse);
-            text.push(...byVerse[verse].sort().map(topic=>'   '+topic))
-            text.push('');
-        })
-    fs.writeFileSync('./output/byVerse.txt',text.join("\n"))
 }

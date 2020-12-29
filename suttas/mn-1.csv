@@ -1,11 +1,36 @@
+#  Sutta index files can contain comments 
+
+#  Blank lines are ignored
+
+#  Use !Title prefix for the title.  Pali goes first then English, separated by a comma
+!Title Mulapariyaya Sutta,The Root of All Things 
+
+#  Self explanatory I certainly hope
+!Location Ukkattha
+
+#  Topic assignments are any number of verse specifiers and topic names
+#  Topic names are literal - we must spell them the same way every time
+#  Verse specifiers are either
+#   -> A range as in 3-26
+#   -> A single number as in 99
+#
+#  Topics should never start with a number - the code will think it is a verse
+
+#  The code is perfectly happy mixing verse specifiers and topics in any
+#  order but in practice:
+#   -> I list the ranges or verses first followed by the topics
+#   -> ranges and verses don't usually mix on a line, as the topics for 
+#      ranges are usually different than the topics for verses
+
 3-26,Self,Person - Untaught
-27-50,Self,Person - Bikkhu Higher Training
+27-50,Self,Person - Bikkhu Higher Training`
 51-74,Arahant,Not-self,Understanding
 75-98,Arahant,Not-self,Lust
 99-122,Arahant,Not-self,Hate
 123-146,Arahant,Not-self,Delusion
 147-170,Tathagata,Not-self,Understanding
 171-194,Tathagata,Not-self,Suffering - Cause,Condition for Aging,Condition for Death,Condition for Birth,Cravings - Elimination,Awakening
+
 3,27,51,75,99,123,147,171,Element Earth
 4,28,52,76,100,124,148,172,Element Water
 5,29,53,77,101,125,149,173,Element Fire
@@ -30,4 +55,3 @@
 24,48,72,96,120,144,168,192,Diversity
 25,49,73,97,121,145,169,193,All
 26,50,74,98,122,146,170,194,Nibanna
-

@@ -1,1 +1,4 @@
 node_modules/
+
+# Interim files that are saved for manual inspection
+debug/
