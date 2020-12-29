@@ -1,0 +1,19 @@
+{
+  "name": "pali-index",
+  "version": "0.1.0",
+  "description": "Manually curated index of English translations of Pali Canon",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenwauters/pali-index.git"
+  },
+  "author": "Kenyon Wauters",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/kenwauters/pali-index/issues"
+  },
+  "homepage": "https://github.com/kenwauters/pali-index#readme"
+}

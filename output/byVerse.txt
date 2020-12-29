@@ -1,0 +1,1110 @@
+mn-1:NaN
+   Not-self
+   Person - Bikkhu Higher Training
+   Self
+   Tathagata
+   Understanding
+
+mn-1:3
+   Element Earth
+   Person - Untaught
+   Self
+
+mn-1:4
+   Element Water
+   Person - Untaught
+   Self
+
+mn-1:5
+   Element Fire
+   Person - Untaught
+   Self
+
+mn-1:6
+   Element Air
+   Person - Untaught
+   Self
+
+mn-1:7
+   Beings
+   Person - Untaught
+   Self
+
+mn-1:8
+   Deities
+   Person - Untaught
+   Self
+
+mn-1:9
+   Deity Pajapati
+   Person - Untaught
+   Self
+
+mn-1:10
+   Deity Brahma
+   Person - Untaught
+   Self
+
+mn-1:11
+   Deity Gods of Streaming Radiance
+   Person - Untaught
+   Self
+
+mn-1:12
+   Deity Gods of Refulgent Glory
+   Person - Untaught
+   Self
+
+mn-1:13
+   Deity Gods of Great Fruit
+   Person - Untaught
+   Self
+
+mn-1:14
+   Deity Overlord
+   Person - Untaught
+   Self
+
+mn-1:15
+   Base of infinite space
+   Person - Untaught
+   Self
+
+mn-1:16
+   Base of infinite consciousness
+   Person - Untaught
+   Self
+
+mn-1:17
+   Base of nothingness
+   Person - Untaught
+   Self
+
+mn-1:18
+   Base of neither-perception-nor-non-perception
+   Person - Untaught
+   Self
+
+mn-1:19
+   Person - Untaught
+   Self
+   Sense data seen
+
+mn-1:20
+   Person - Untaught
+   Self
+   Sense data heard
+
+mn-1:21
+   Person - Untaught
+   Self
+   Sense data
+
+mn-1:22
+   Cognition
+   Person - Untaught
+   Self
+
+mn-1:23
+   Person - Untaught
+   Self
+   Unity
+
+mn-1:24
+   Diversity
+   Person - Untaught
+   Self
+
+mn-1:25
+   All
+   Person - Untaught
+   Self
+
+mn-1:26
+   Nibanna
+   Person - Untaught
+   Self
+
+mn-1:27
+   Element Earth
+
+mn-1:28
+   Element Water
+
+mn-1:29
+   Element Fire
+
+mn-1:30
+   Element Air
+
+mn-1:31
+   Beings
+
+mn-1:32
+   Deities
+
+mn-1:33
+   Deity Pajapati
+
+mn-1:34
+   Deity Brahma
+
+mn-1:35
+   Deity Gods of Streaming Radiance
+
+mn-1:36
+   Deity Gods of Refulgent Glory
+
+mn-1:37
+   Deity Gods of Great Fruit
+
+mn-1:38
+   Deity Overlord
+
+mn-1:39
+   Base of infinite space
+
+mn-1:40
+   Base of infinite consciousness
+
+mn-1:41
+   Base of nothingness
+
+mn-1:42
+   Base of neither-perception-nor-non-perception
+
+mn-1:43
+   Sense data seen
+
+mn-1:44
+   Sense data heard
+
+mn-1:45
+   Sense data
+
+mn-1:46
+   Cognition
+
+mn-1:47
+   Unity
+
+mn-1:48
+   Diversity
+
+mn-1:49
+   All
+
+mn-1:50
+   Nibanna
+
+mn-1:51
+   Arahant
+   Element Earth
+   Not-self
+   Understanding
+
+mn-1:52
+   Arahant
+   Element Water
+   Not-self
+   Understanding
+
+mn-1:53
+   Arahant
+   Element Fire
+   Not-self
+   Understanding
+
+mn-1:54
+   Arahant
+   Element Air
+   Not-self
+   Understanding
+
+mn-1:55
+   Arahant
+   Beings
+   Not-self
+   Understanding
+
+mn-1:56
+   Arahant
+   Deities
+   Not-self
+   Understanding
+
+mn-1:57
+   Arahant
+   Deity Pajapati
+   Not-self
+   Understanding
+
+mn-1:58
+   Arahant
+   Deity Brahma
+   Not-self
+   Understanding
+
+mn-1:59
+   Arahant
+   Deity Gods of Streaming Radiance
+   Not-self
+   Understanding
+
+mn-1:60
+   Arahant
+   Deity Gods of Refulgent Glory
+   Not-self
+   Understanding
+
+mn-1:61
+   Arahant
+   Deity Gods of Great Fruit
+   Not-self
+   Understanding
+
+mn-1:62
+   Arahant
+   Deity Overlord
+   Not-self
+   Understanding
+
+mn-1:63
+   Arahant
+   Base of infinite space
+   Not-self
+   Understanding
+
+mn-1:64
+   Arahant
+   Base of infinite consciousness
+   Not-self
+   Understanding
+
+mn-1:65
+   Arahant
+   Base of nothingness
+   Not-self
+   Understanding
+
+mn-1:66
+   Arahant
+   Base of neither-perception-nor-non-perception
+   Not-self
+   Understanding
+
+mn-1:67
+   Arahant
+   Not-self
+   Sense data seen
+   Understanding
+
+mn-1:68
+   Arahant
+   Not-self
+   Sense data heard
+   Understanding
+
+mn-1:69
+   Arahant
+   Not-self
+   Sense data
+   Understanding
+
+mn-1:70
+   Arahant
+   Cognition
+   Not-self
+   Understanding
+
+mn-1:71
+   Arahant
+   Not-self
+   Understanding
+   Unity
+
+mn-1:72
+   Arahant
+   Diversity
+   Not-self
+   Understanding
+
+mn-1:73
+   All
+   Arahant
+   Not-self
+   Understanding
+
+mn-1:74
+   Arahant
+   Nibanna
+   Not-self
+   Understanding
+
+mn-1:75
+   Arahant
+   Element Earth
+   Lust
+   Not-self
+
+mn-1:76
+   Arahant
+   Element Water
+   Lust
+   Not-self
+
+mn-1:77
+   Arahant
+   Element Fire
+   Lust
+   Not-self
+
+mn-1:78
+   Arahant
+   Element Air
+   Lust
+   Not-self
+
+mn-1:79
+   Arahant
+   Beings
+   Lust
+   Not-self
+
+mn-1:80
+   Arahant
+   Deities
+   Lust
+   Not-self
+
+mn-1:81
+   Arahant
+   Deity Pajapati
+   Lust
+   Not-self
+
+mn-1:82
+   Arahant
+   Deity Brahma
+   Lust
+   Not-self
+
+mn-1:83
+   Arahant
+   Deity Gods of Streaming Radiance
+   Lust
+   Not-self
+
+mn-1:84
+   Arahant
+   Deity Gods of Refulgent Glory
+   Lust
+   Not-self
+
+mn-1:85
+   Arahant
+   Deity Gods of Great Fruit
+   Lust
+   Not-self
+
+mn-1:86
+   Arahant
+   Deity Overlord
+   Lust
+   Not-self
+
+mn-1:87
+   Arahant
+   Base of infinite space
+   Lust
+   Not-self
+
+mn-1:88
+   Arahant
+   Base of infinite consciousness
+   Lust
+   Not-self
+
+mn-1:89
+   Arahant
+   Base of nothingness
+   Lust
+   Not-self
+
+mn-1:90
+   Arahant
+   Base of neither-perception-nor-non-perception
+   Lust
+   Not-self
+
+mn-1:91
+   Arahant
+   Lust
+   Not-self
+   Sense data seen
+
+mn-1:92
+   Arahant
+   Lust
+   Not-self
+   Sense data heard
+
+mn-1:93
+   Arahant
+   Lust
+   Not-self
+   Sense data
+
+mn-1:94
+   Arahant
+   Cognition
+   Lust
+   Not-self
+
+mn-1:95
+   Arahant
+   Lust
+   Not-self
+   Unity
+
+mn-1:96
+   Arahant
+   Diversity
+   Lust
+   Not-self
+
+mn-1:97
+   All
+   Arahant
+   Lust
+   Not-self
+
+mn-1:98
+   Arahant
+   Lust
+   Nibanna
+   Not-self
+
+mn-1:99
+   Arahant
+   Element Earth
+   Hate
+   Not-self
+
+mn-1:100
+   Arahant
+   Element Water
+   Hate
+   Not-self
+
+mn-1:101
+   Arahant
+   Element Fire
+   Hate
+   Not-self
+
+mn-1:102
+   Arahant
+   Element Air
+   Hate
+   Not-self
+
+mn-1:103
+   Arahant
+   Beings
+   Hate
+   Not-self
+
+mn-1:104
+   Arahant
+   Deities
+   Hate
+   Not-self
+
+mn-1:105
+   Arahant
+   Deity Pajapati
+   Hate
+   Not-self
+
+mn-1:106
+   Arahant
+   Deity Brahma
+   Hate
+   Not-self
+
+mn-1:107
+   Arahant
+   Deity Gods of Streaming Radiance
+   Hate
+   Not-self
+
+mn-1:108
+   Arahant
+   Deity Gods of Refulgent Glory
+   Hate
+   Not-self
+
+mn-1:109
+   Arahant
+   Deity Gods of Great Fruit
+   Hate
+   Not-self
+
+mn-1:110
+   Arahant
+   Deity Overlord
+   Hate
+   Not-self
+
+mn-1:111
+   Arahant
+   Base of infinite space
+   Hate
+   Not-self
+
+mn-1:112
+   Arahant
+   Base of infinite consciousness
+   Hate
+   Not-self
+
+mn-1:113
+   Arahant
+   Base of nothingness
+   Hate
+   Not-self
+
+mn-1:114
+   Arahant
+   Base of neither-perception-nor-non-perception
+   Hate
+   Not-self
+
+mn-1:115
+   Arahant
+   Hate
+   Not-self
+   Sense data seen
+
+mn-1:116
+   Arahant
+   Hate
+   Not-self
+   Sense data heard
+
+mn-1:117
+   Arahant
+   Hate
+   Not-self
+   Sense data
+
+mn-1:118
+   Arahant
+   Cognition
+   Hate
+   Not-self
+
+mn-1:119
+   Arahant
+   Hate
+   Not-self
+   Unity
+
+mn-1:120
+   Arahant
+   Diversity
+   Hate
+   Not-self
+
+mn-1:121
+   All
+   Arahant
+   Hate
+   Not-self
+
+mn-1:122
+   Arahant
+   Hate
+   Nibanna
+   Not-self
+
+mn-1:123
+   Arahant
+   Delusion
+   Element Earth
+   Not-self
+
+mn-1:124
+   Arahant
+   Delusion
+   Element Water
+   Not-self
+
+mn-1:125
+   Arahant
+   Delusion
+   Element Fire
+   Not-self
+
+mn-1:126
+   Arahant
+   Delusion
+   Element Air
+   Not-self
+
+mn-1:127
+   Arahant
+   Beings
+   Delusion
+   Not-self
+
+mn-1:128
+   Arahant
+   Deities
+   Delusion
+   Not-self
+
+mn-1:129
+   Arahant
+   Deity Pajapati
+   Delusion
+   Not-self
+
+mn-1:130
+   Arahant
+   Deity Brahma
+   Delusion
+   Not-self
+
+mn-1:131
+   Arahant
+   Deity Gods of Streaming Radiance
+   Delusion
+   Not-self
+
+mn-1:132
+   Arahant
+   Deity Gods of Refulgent Glory
+   Delusion
+   Not-self
+
+mn-1:133
+   Arahant
+   Deity Gods of Great Fruit
+   Delusion
+   Not-self
+
+mn-1:134
+   Arahant
+   Deity Overlord
+   Delusion
+   Not-self
+
+mn-1:135
+   Arahant
+   Base of infinite space
+   Delusion
+   Not-self
+
+mn-1:136
+   Arahant
+   Base of infinite consciousness
+   Delusion
+   Not-self
+
+mn-1:137
+   Arahant
+   Base of nothingness
+   Delusion
+   Not-self
+
+mn-1:138
+   Arahant
+   Base of neither-perception-nor-non-perception
+   Delusion
+   Not-self
+
+mn-1:139
+   Arahant
+   Delusion
+   Not-self
+   Sense data seen
+
+mn-1:140
+   Arahant
+   Delusion
+   Not-self
+   Sense data heard
+
+mn-1:141
+   Arahant
+   Delusion
+   Not-self
+   Sense data
+
+mn-1:142
+   Arahant
+   Cognition
+   Delusion
+   Not-self
+
+mn-1:143
+   Arahant
+   Delusion
+   Not-self
+   Unity
+
+mn-1:144
+   Arahant
+   Delusion
+   Diversity
+   Not-self
+
+mn-1:145
+   All
+   Arahant
+   Delusion
+   Not-self
+
+mn-1:146
+   Arahant
+   Delusion
+   Nibanna
+   Not-self
+
+mn-1:147
+   Element Earth
+
+mn-1:148
+   Element Water
+
+mn-1:149
+   Element Fire
+
+mn-1:150
+   Element Air
+
+mn-1:151
+   Beings
+
+mn-1:152
+   Deities
+
+mn-1:153
+   Deity Pajapati
+
+mn-1:154
+   Deity Brahma
+
+mn-1:155
+   Deity Gods of Streaming Radiance
+
+mn-1:156
+   Deity Gods of Refulgent Glory
+
+mn-1:157
+   Deity Gods of Great Fruit
+
+mn-1:158
+   Deity Overlord
+
+mn-1:159
+   Base of infinite space
+
+mn-1:160
+   Base of infinite consciousness
+
+mn-1:161
+   Base of nothingness
+
+mn-1:162
+   Base of neither-perception-nor-non-perception
+
+mn-1:163
+   Sense data seen
+
+mn-1:164
+   Sense data heard
+
+mn-1:165
+   Sense data
+
+mn-1:166
+   Cognition
+
+mn-1:167
+   Unity
+
+mn-1:168
+   Diversity
+
+mn-1:169
+   All
+
+mn-1:170
+   Nibanna
+
+mn-1:171
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Element Earth
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:172
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Element Water
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:173
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Element Fire
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:174
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Element Air
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:175
+   Awakening
+   Beings
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:176
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Deities
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:177
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Deity Pajapati
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:178
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Deity Brahma
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:179
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Deity Gods of Streaming Radiance
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:180
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Deity Gods of Refulgent Glory
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:181
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Deity Gods of Great Fruit
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:182
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Deity Overlord
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:183
+   Awakening
+   Base of infinite space
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:184
+   Awakening
+   Base of infinite consciousness
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:185
+   Awakening
+   Base of nothingness
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:186
+   Awakening
+   Base of neither-perception-nor-non-perception
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:187
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Sense data seen
+   Suffering - Cause
+   Tathagata
+
+mn-1:188
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Sense data heard
+   Suffering - Cause
+   Tathagata
+
+mn-1:189
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Sense data
+   Suffering - Cause
+   Tathagata
+
+mn-1:190
+   Awakening
+   Cognition
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:191
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+   Unity
+
+mn-1:192
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Diversity
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:193
+   All
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Not-self
+   Suffering - Cause
+   Tathagata
+
+mn-1:194
+   Awakening
+   Condition for Aging
+   Condition for Birth
+   Condition for Death
+   Cravings - Elimination
+   Nibanna
+   Not-self
+   Suffering - Cause
+   Tathagata
