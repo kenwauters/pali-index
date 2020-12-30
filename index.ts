@@ -42,7 +42,7 @@ class TopicRange {
 
 class Sutta {
     volume:string = ''
-    sutta:Number = 0
+    sutta:number = 0
     titlePali:string = ''
     titleEnglish: string = ''
     location:string = ''
@@ -85,6 +85,7 @@ function main() {
 
     makeSummaryBySutta(suttas)
     makeSummaryByLocation(suttas)
+    makeTheBigOne(suttas)
 }
 
 
@@ -167,6 +168,18 @@ function makeSummaryBySutta(suttas:object) {
     fs.writeFileSync('./output/summary-by-sutta.txt',text)
 }
 
+function sortSuttas(suttas:object) {
+    let keys = Object.keys(suttas)
+    keys.sort((a,b)=>{
+        if(suttas[a].volume < suttas[b].volume) return -1
+        if(suttas[a].volume > suttas[b].volume) return  1
+        
+        if(suttas[a].sutta  < suttas[b].sutta)  return -1
+        if(suttas[a].sutta  > suttas[b].sutta)  return  1
+    }) 
+    return keys
+}
+
 function makeSummaryByLocation(suttas:object) {
     // Pull out locations and volume/number
     let locations = {}
@@ -194,17 +207,85 @@ function makeSummaryByLocation(suttas:object) {
     fs.writeFileSync('./output/summary-by-location.txt',text)
 }
 
-function sortSuttas(suttas:object) {
-    let keys = Object.keys(suttas)
-    keys.sort((a,b)=>{
-        if(suttas[a].volume < suttas[b].volume) return -1
-        if(suttas[a].volume > suttas[b].volume) return  1
-        
-        if(suttas[a].sutta  < suttas[b].sutta)  return -1
-        if(suttas[a].sutta  > suttas[b].sutta)  return  1
-    }) 
-    return keys
+interface TopicCombo {
+    volume: string
+    sutta: number
+    verseStart: number
+    verseEnd: number
+    topics: Array<string>
+    details: Array<string>
 }
+function makeTheBigOne(suttas:object) {
+    // In one pass go through all suttas, find all ranges, add in
+    // all topics and details within that range
+    let combos = {}
+    Object.values(suttas).forEach(sutta=>{
+        const s:Sutta = sutta
+        s.topicsByRange.forEach(tbr=>{
+            const comboKey = `${s.volume}-${s.sutta}:${tbr.verseStart}-${tbr.verseEnd}` 
+            if(!(comboKey in combos)) {
+                let combo:TopicCombo = {
+                    volume: s.volume,
+                    sutta: s.sutta,
+                    verseStart: tbr.verseStart,
+                    verseEnd: tbr.verseEnd,
+                    topics: [],
+                    details: []
+                }
+                // only on creation do we scan for details to add
+                s.topicsByVerse.forEach(tbv=>{
+                    if(tbv.verse >= combo.verseStart && tbv.verse <= combo.verseEnd) {
+                        combo.details.push(tbv.topic)
+                    }
+                })
+
+                // Finally add it in
+                combos[comboKey] = combo
+            }
+            combos[comboKey].topics.push(tbr.topic)
+        })
+    })
+
+    // we don't need the keys anymore, just the array
+    let comboValues:Array<TopicCombo> = Object.values(combos);
+
+    // Expand list to one entry per major topic and range 
+    interface Pointer {
+        topic: string
+        index: number
+    }
+    const pointers:Array<Pointer> = comboValues.reduce((acc,combo,idx)=>{
+        combo.topics.forEach(topic=>acc.push({topic:topic,index:idx}))
+        return acc
+    },[]).sort((a,b)=>{
+        if(a.topic < b.topic) return -1
+        if(a.topic > b.topic) return 1
+        if(comboValues[a.index].volume > comboValues[b.index].volume) return 1
+        if(comboValues[a.index].volume < comboValues[b.index].volume) return -1
+        if(comboValues[a.index].sutta > comboValues[b.index].sutta) return 1
+        if(comboValues[a.index].sutta < comboValues[b.index].sutta) return -1
+    })
+
+    const indent = '  '
+    const text = pointers.reduce((acc,pointer)=>{
+        const combo = comboValues[pointer.index]
+        acc+=`${pointer.topic} - ${combo.volume}-${combo.sutta}:${combo.verseStart}-${combo.verseEnd}\n`
+        if(combo.topics.length>1) {
+            acc+=`${indent}Associated Topics: ${combo.topics.sort().join(', ')}\n`
+        }
+        if(combo.details.length>0) {
+            acc+=`${indent}Associated Details: ${combo.details.sort().join(', ')}\n`
+        }
+        acc+=`\n`
+        return acc
+    },'')
+
+
+    fs.writeFileSync('./debug/theBigOne.json',JSON.stringify(combos,null,2))
+    fs.writeFileSync('./debug/theBigOne-pointers.json',JSON.stringify(pointers,null,2))
+    fs.writeFileSync('./output/topics.txt',text);
+}
+
 
 /**
  * Script execution entry point
