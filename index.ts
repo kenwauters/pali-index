@@ -56,31 +56,37 @@ class Sutta {
     }
 }
 
-let suttas = {}
-
 /**
  * Process inputs and populate global-scoped list of suttas
  */
-fs.readdirSync('./suttas')
-    .filter(fileName=>fileName.endsWith('.csv'))
-    .forEach(fileName=>{
-        const suttaId:string = fileName.split('.')[0];
-        if(!(suttaId in suttas)) {
-            suttas[suttaId] = new Sutta(suttaId) 
-        }
-        let sutta = suttas[suttaId]
+function main() {
+    let suttas = {}
+    
+    fs.readdirSync('./suttas')
+        .filter(fileName=>fileName.endsWith('.csv'))
+        .forEach(fileName=>{
+            const suttaId:string = fileName.split('.')[0];
+            if(!(suttaId in suttas)) {
+                suttas[suttaId] = new Sutta(suttaId) 
+            }
+            let sutta = suttas[suttaId]
 
-        fs.readFileSync(`./suttas/${fileName}`,'utf8')
-            .replace(/\r/g,'')
-            .split("\n")
-            .forEach(line=>{
-                if(!addedTitleOrLocation(sutta,line.trim()) ) {
-                    processSuttaLine(sutta,line.trim())
-                }
-            })
-})
+            fs.readFileSync(`./suttas/${fileName}`,'utf8')
+                .replace(/\r/g,'')
+                .split("\n")
+                .forEach(line=>{
+                    if(!addedTitleOrLocation(sutta,line.trim()) ) {
+                        processSuttaLine(sutta,line.trim())
+                    }
+                })
+    })
 
-fs.writeFileSync('./debug/suttas.json',JSON.stringify(suttas,null,4))
+    fs.writeFileSync('./debug/suttas.json',JSON.stringify(suttas,null,4))
+
+    makeSummaryBySutta(suttas)
+    makeSummaryByLocation(suttas)
+}
+
 
 function addedTitleOrLocation(sutta:Sutta,line:string) {
     if(line.startsWith('!Title')) {
@@ -123,3 +129,84 @@ function processSuttaLine(sutta:Sutta,line:string) {
         ranges.forEach(range=>sutta.topicsByRange.push(new TopicRange(topic,range)))
     })
 }
+
+function makeSummaryBySutta(suttas:object) {
+    const sortedSuttaKeys = sortSuttas(suttas);
+    const text = sortedSuttaKeys.reduce((acc,key)=>{
+        const indent = '  '
+        const indent2 = '    '
+        const sutta = suttas[key]
+        acc += `${key}\n`
+        acc += `${indent}${sutta.titlePali}\n`
+        acc += `${indent}${sutta.titleEnglish}\n`
+        acc += `${indent}${sutta.location}\n`
+
+        acc += `\n`
+        acc += `${indent}Broad Topics:\n`
+        const majorTopics = sutta.topicsByRange.reduce((acc,topic)=>{
+            if(!acc.includes(topic.topic)) {
+                acc.push(topic.topic)
+            }
+            return acc
+        },[]).sort()
+        acc += `${indent2}${majorTopics.join(`\n${indent2}`)}\n`
+
+        acc += `\n`
+        acc += `${indent}Narrow Mentions:\n`
+        const minorTopics = sutta.topicsByVerse.reduce((acc,topic)=>{
+            if(!acc.includes(topic.topic)) {
+                acc.push(topic.topic)
+            }
+            return acc
+        },[]).sort()
+        acc += `${indent2}${minorTopics.join(`\n${indent2}`)}\n`
+
+        return acc
+    },'') 
+
+    fs.writeFileSync('./output/summary-by-sutta.txt',text)
+}
+
+function makeSummaryByLocation(suttas:object) {
+    // Pull out locations and volume/number
+    let locations = {}
+    for(const [key,sutta] of Object.entries(suttas)) {
+        if(!(sutta.location in locations)) {
+           locations[sutta.location] = [] 
+        }
+        locations[sutta.location].push({ volume: sutta.volume, sutta: sutta.sutta})
+    } 
+
+    // Sort locations, sort by volume/number within location
+    const text = Object.keys(locations).sort().reduce((acc,location)=>{
+        const ind = '  '
+        acc+=`${location}\n`
+        acc+= `${ind}` + locations[location].sort((a,b)=>{
+            if(a.volume < b.volume) return -1
+            if(a.volume > b.volume) return 1
+            if(a.sutta  < b.sutta)  return -1
+            if(a.sutta  > b.sutta)  return 1
+        }).map(l=>`${l.volume}-${l.sutta}`).join(`\n${ind}`)
+        acc+=`\n`
+        return acc;
+    },'')
+
+    fs.writeFileSync('./output/summary-by-location.txt',text)
+}
+
+function sortSuttas(suttas:object) {
+    let keys = Object.keys(suttas)
+    keys.sort((a,b)=>{
+        if(suttas[a].volume < suttas[b].volume) return -1
+        if(suttas[a].volume > suttas[b].volume) return  1
+        
+        if(suttas[a].sutta  < suttas[b].sutta)  return -1
+        if(suttas[a].sutta  > suttas[b].sutta)  return  1
+    }) 
+    return keys
+}
+
+/**
+ * Script execution entry point
+ */
+main()
