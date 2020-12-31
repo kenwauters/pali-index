@@ -10,6 +10,11 @@ list of topics is `topics.txt`.
 
 Majjhima Nikaya translated by Bhikkhu Nanamoli and Bikkhu Bodhi
 
+## Contact
+
+I created the Kenyon Wauters pseudonym to work on this project.  I am
+sometimes known as Beacon Ken.  Contact me at kenwauters@protonmail.com.
+
 ## Contributions
 
 Contributions are welcome for content and code.  
