@@ -57,10 +57,12 @@ class Sutta {
 }
 
 /**
- * Process inputs and populate global-scoped list of suttas
+ * Process inputs into structure data by Sutta
  */
 function main() {
     let suttas = {}
+    let majorTopics = []
+    let minorTopics = []
     
     fs.readdirSync('./suttas')
         .filter(fileName=>fileName.endsWith('.csv'))
@@ -69,7 +71,7 @@ function main() {
             if(!(suttaId in suttas)) {
                 suttas[suttaId] = new Sutta(suttaId) 
             }
-            let sutta = suttas[suttaId]
+            let sutta:Sutta = suttas[suttaId]
 
             fs.readFileSync(`./suttas/${fileName}`,'utf8')
                 .replace(/\r/g,'')
@@ -79,14 +81,27 @@ function main() {
                         processSuttaLine(sutta,line.trim())
                     }
                 })
+            sutta.topicsByVerse.forEach(minorTopic=>{
+                if(!minorTopics.includes(minorTopic.topic)) {
+                    minorTopics.push(minorTopic.topic)
+                }
+            })
+            sutta.topicsByRange.forEach(majorTopic=>{
+                if(!majorTopics.includes(majorTopic.topic)) {
+                    majorTopics.push(majorTopic.topic)
+                }
+            })
     })
 
     fs.writeFileSync('./debug/suttas.json',JSON.stringify(suttas,null,4))
 
+    makeListOfTopics(majorTopics,'./output/list-topics-major.txt')
+    makeListOfTopics(minorTopics,'./output/list-topics-minor.txt')
+    makeListOfLocations(suttas)
     makeSummaryBySutta(suttas)
-    makeSummaryByLocation(suttas)
     makeTheBigOne(suttas)
 }
+
 
 
 function addedTitleOrLocation(sutta:Sutta,line:string) {
@@ -130,6 +145,37 @@ function processSuttaLine(sutta:Sutta,line:string) {
         ranges.forEach(range=>sutta.topicsByRange.push(new TopicRange(topic,range)))
     })
 }
+
+function makeListOfTopics(topics:Array<string>,fileName:string) {
+    fs.writeFileSync(fileName,topics.sort().join("\n"))
+}
+function makeListOfLocations(suttas:object) {
+    // Pull out locations and volume/number
+    let locations = {}
+    for(const [key,sutta] of Object.entries(suttas)) {
+        if(!(sutta.location in locations)) {
+           locations[sutta.location] = [] 
+        }
+        locations[sutta.location].push({ volume: sutta.volume, sutta: sutta.sutta})
+    } 
+
+    // Sort locations, sort by volume/number within location
+    const text = Object.keys(locations).sort().reduce((acc,location)=>{
+        const ind = '  '
+        acc+=`${location}\n`
+        acc+= `${ind}` + locations[location].sort((a,b)=>{
+            if(a.volume < b.volume) return -1
+            if(a.volume > b.volume) return 1
+            if(a.sutta  < b.sutta)  return -1
+            if(a.sutta  > b.sutta)  return 1
+        }).map(l=>`${l.volume}-${l.sutta}`).join(`\n${ind}`)
+        acc+=`\n`
+        return acc;
+    },'')
+
+    fs.writeFileSync('./output/list-of-locations.txt',text)
+}
+
 
 function makeSummaryBySutta(suttas:object) {
     const sortedSuttaKeys = sortSuttas(suttas);
@@ -178,33 +224,6 @@ function sortSuttas(suttas:object) {
         if(suttas[a].sutta  > suttas[b].sutta)  return  1
     }) 
     return keys
-}
-
-function makeSummaryByLocation(suttas:object) {
-    // Pull out locations and volume/number
-    let locations = {}
-    for(const [key,sutta] of Object.entries(suttas)) {
-        if(!(sutta.location in locations)) {
-           locations[sutta.location] = [] 
-        }
-        locations[sutta.location].push({ volume: sutta.volume, sutta: sutta.sutta})
-    } 
-
-    // Sort locations, sort by volume/number within location
-    const text = Object.keys(locations).sort().reduce((acc,location)=>{
-        const ind = '  '
-        acc+=`${location}\n`
-        acc+= `${ind}` + locations[location].sort((a,b)=>{
-            if(a.volume < b.volume) return -1
-            if(a.volume > b.volume) return 1
-            if(a.sutta  < b.sutta)  return -1
-            if(a.sutta  > b.sutta)  return 1
-        }).map(l=>`${l.volume}-${l.sutta}`).join(`\n${ind}`)
-        acc+=`\n`
-        return acc;
-    },'')
-
-    fs.writeFileSync('./output/summary-by-location.txt',text)
 }
 
 interface TopicCombo {
