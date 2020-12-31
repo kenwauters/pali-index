@@ -8,20 +8,9 @@
 #  Self explanatory I certainly hope
 !Location Ukkattha
 
-#  Topic assignments are any number of verse specifiers and topic names
-#  Topic names are literal - we must spell them the same way every time
-#  Verse specifiers are either
-#   -> A range as in 3-26
-#   -> A single number as in 99
-#
-#  Topics should never start with a number - the code will think it is a verse
-
-#  The code is perfectly happy mixing verse specifiers and topics in any
-#  order but in practice:
-#   -> I list the ranges or verses first followed by the topics
-#   -> ranges and verses don't usually mix on a line, as the topics for 
-#      ranges are usually different than the topics for verses
-
+# These are major topics.  "Major" means it is an overarching theme of this Sutta
+# (and possibly others).  A major topic in only one verse should be specified like 5-5
+# Major topics are the top level entries in the main output topics.txt
 3-26,Self,Person - Untaught
 27-50,Self,Person - Bikkhu Higher Training
 51-74,Arahant,Not-self,Understanding
@@ -31,6 +20,8 @@
 147-170,Tathagata,Not-self,Understanding
 171-194,Tathagata,Not-self,Suffering - Cause,Condition for Aging,Condition for Death,Condition for Birth,Cravings - Elimination,Awakening
 
+#  These are minor topics.  "Minor" means one of a list of details supporting a major topic.
+#  There is no index of minor topics.
 3,27,51,75,99,123,147,171,Element Earth
 4,28,52,76,100,124,148,172,Element Water
 5,29,53,77,101,125,149,173,Element Fire

@@ -1,4 +1,5 @@
 Arahant
+Attention
 Awakening
 Condition for Aging
 Condition for Birth
@@ -10,7 +11,17 @@ Lust
 Not-self
 Person - Bikkhu Higher Training
 Person - Untaught
+Person - Wise
+Restraint of Faculties
 Self
 Suffering - Cause
+Suffering - End
+Taints Abandonded by Developing
+Taints Abandonded by Removing
+Taints Abandonded by Seeing
+Taints Abandoned By Using
+Taints Abandoned by Avoiding
+Taints Abandoned by Enduring
+Taints Abanonded by Restraining
 Tathagata
 Understanding

@@ -2,9 +2,13 @@
 
 Manually curated Index of English Translations of the Pali Canon.
 
-To see the indexes, click on the `output` folder above and browse
-the files.
+You don't need to run any programs to see the indexes, just click
+on the `output` folder above.  The comprehensive cross-indexed
+list of topics is `topics.txt`.
 
+## Sources
+
+Majjhima Nikaya translated by Bhikkhu Nanamoli and Bikkhu Bodhi
 
 ## Contributions
 
@@ -21,3 +25,18 @@ The file is named after the volume and the
 sutta numbers, so Majjhima Nikaya 1 is `mn-1.csv`.
 
 See Sutta file `mn-1.csv` for comments on how to structure the files.
+
+### TODO List Content
+
+* Majjhima Nikaya complete index
+* Digha Nikaya complete index
+* (Doubtful Kenyon will do it) Angutarra Nikaya
+* (Doubtful Kenyon will do it) Samyutta Nikaya
+
+### TODO List Code
+
+* Input validation and error reporting
+* Pali typeface
+* Pretty output with links between topics
+* Links to online version of volumes
+* The usual code refactoring and normalization

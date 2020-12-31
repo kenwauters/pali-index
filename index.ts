@@ -176,7 +176,6 @@ function makeListOfLocations(suttas:object) {
     fs.writeFileSync('./output/list-of-locations.txt',text)
 }
 
-
 function makeSummaryBySutta(suttas:object) {
     const sortedSuttaKeys = sortSuttas(suttas);
     const text = sortedSuttaKeys.reduce((acc,key)=>{
@@ -189,7 +188,7 @@ function makeSummaryBySutta(suttas:object) {
         acc += `${indent}${sutta.location}\n`
 
         acc += `\n`
-        acc += `${indent}Broad Topics:\n`
+        acc += `${indent}Major Topics:\n`
         const majorTopics = sutta.topicsByRange.reduce((acc,topic)=>{
             if(!acc.includes(topic.topic)) {
                 acc.push(topic.topic)
@@ -199,7 +198,7 @@ function makeSummaryBySutta(suttas:object) {
         acc += `${indent2}${majorTopics.join(`\n${indent2}`)}\n`
 
         acc += `\n`
-        acc += `${indent}Narrow Mentions:\n`
+        acc += `${indent}Minor Topics:\n`
         const minorTopics = sutta.topicsByVerse.reduce((acc,topic)=>{
             if(!acc.includes(topic.topic)) {
                 acc.push(topic.topic)
@@ -208,7 +207,7 @@ function makeSummaryBySutta(suttas:object) {
         },[]).sort()
         acc += `${indent2}${minorTopics.join(`\n${indent2}`)}\n`
 
-        return acc
+        return acc+`\n`;
     },'') 
 
     fs.writeFileSync('./output/summary-by-sutta.txt',text)
@@ -290,10 +289,10 @@ function makeTheBigOne(suttas:object) {
         const combo = comboValues[pointer.index]
         acc+=`${pointer.topic} - ${combo.volume}-${combo.sutta}:${combo.verseStart}-${combo.verseEnd}\n`
         if(combo.topics.length>1) {
-            acc+=`${indent}Associated Topics: ${combo.topics.sort().join(', ')}\n`
+            acc+=`${indent}Major Topics: ${combo.topics.sort().join(', ')}\n`
         }
         if(combo.details.length>0) {
-            acc+=`${indent}Associated Details: ${combo.details.sort().join(', ')}\n`
+            acc+=`${indent}Minor Topics: ${combo.details.sort().join(', ')}\n`
         }
         acc+=`\n`
         return acc

@@ -3,7 +3,7 @@ mn-1
   The Root of All Things
   Ukkattha
 
-  Broad Topics:
+  Major Topics:
     Arahant
     Awakening
     Condition for Aging
@@ -21,7 +21,7 @@ mn-1
     Tathagata
     Understanding
 
-  Narrow Mentions:
+  Minor Topics:
     All
     Base of infinite consciousness
     Base of infinite space
@@ -46,3 +46,50 @@ mn-1
     Sense data heard
     Sense data seen
     Unity
+
+mn-2
+  Sabbasava Sutta
+  All The Taints
+  Savatthi in Jeta's Grove, Anathapinkika's Park
+
+  Major Topics:
+    Attention
+    Person - Untaught
+    Person - Wise
+    Restraint of Faculties
+    Suffering - End
+    Taints Abandonded by Developing
+    Taints Abandonded by Removing
+    Taints Abandonded by Seeing
+    Taints Abandoned By Using
+    Taints Abandoned by Avoiding
+    Taints Abandoned by Enduring
+    Taints Abanonded by Restraining
+    Understanding
+
+  Minor Topics:
+    Bikkhu and Almsfood
+    Bikkhu and Medicine
+    Bikkhu and Resting Place
+    Bikkhu and Robe
+    Enlightenment Factor of Concentration
+    Enlightenment Factor of Energy
+    Enlightenment Factor of Equanimity
+    Enlightenment Factor of Mindfulness
+    Enlightenment Factor of Rapture
+    Enlightenment Factor of Tranquility
+    Enlightment Factor of Investigation-of-states
+    Fetter of Doubt
+    Fetter of Personality View
+    Fetter of Rules and Observances
+    Fetter of views
+    Four Noble Truths
+    Friends
+    Self
+    States
+    Suffering
+    Taint of Being
+    Taint of Ignorance
+    Taint of Sensual Desire
+    Thoughts
+
