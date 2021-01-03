@@ -2,9 +2,12 @@
 
 Manually curated Index of English Translations of the Pali Canon.
 
-You don't need to run any programs to see the indexes, just click
-on the `output` folder above.  The comprehensive cross-indexed
-list of topics is `topics.txt`.
+The indexes are:
+* [Comprehensive topical index](output/topics.txt)
+* [Summary by Sutta](output/summary-by-sutta.txt)
+* [List of Locations](output/list-of-locations.txt)
+* [List of Major Topics](output/list-topics-major.txt)
+* [List of Minor Topics](output/list-topics-minor.txt)
 
 ## Sources
 
