@@ -175,15 +175,18 @@ the effort to actually create the index, and allow for use of Pali later if desi
 
 ## The Exceptions
 
-Finally of course are the exceptions.  We still use some Pali terms where no translation is
-possible.  These are:
+The translators of the canon into English have left all place names and person names
+in Pali, and so this index does the same.
 
-* place names and person names 
-* some words that the translators have left in Pali
-    * dhamma, because its meaning almost always is derived from context
-    * nibanna, because it has entered the mainstream
-    * arahant, because that is the word in the text so it can be indexed with no special effort
-    * The Buddha, as this is a title for a specific person`
+Translators throught the centuries working in many languages tend to settle on a few
+words that they leave untranslated.  The meaning of those words either must be inferred
+by context, or 
+by studying the Dhamma and through direct knowledge.  The specific words that have been
+left in Pali within the translations I use are:
 
-Other words left in Pali are translated and English is used.  For example, "Discourse" instead
-of "Sutta".
+    * dhamma
+    * nibanna
+    * arahant
+
+Finally, the word "Buddha" itself is used simply because everybody knows it refers
+to a single individual.
