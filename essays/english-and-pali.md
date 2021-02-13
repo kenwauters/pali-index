@@ -1,8 +1,7 @@
 # English And Pali
 
 There are three types of knowledge that are useful to pursuing awakening.
-These are learning, reasoning, and direct knowledge, and they are 
-(explained well here)[https://bhikkhu.wordpress.com/2006/10/19/understanding-the-dhamma-through-direct-knowledge/].
+These are learning, reasoning, and direct knowledge, and they are [explained well here](https://bhikkhu.wordpress.com/2006/10/19/understanding-the-dhamma-through-direct-knowledge/).
 
 This index exists to support the first two types of knowledge, those gained
 by learning and reasoning.  As such, it deals only with the English translations
