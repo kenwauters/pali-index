@@ -1,25 +1,3 @@
-#  Sutta index files can contain comments 
-
-#  Blank lines are ignored
-
-#  Use !Title prefix for the title.  Pali goes first then English, separated by a comma
-!Title Mulapariyaya Sutta,The Root of All Things 
-
-#  Self explanatory I certainly hope
-!Location Ukkattha
-
-# These are major topics.  "Major" means it is an overarching theme of this Sutta
-# (and possibly others).  A major topic in only one verse should be specified like 5-5
-# Major topics are the top level entries in the main output topics.txt
-3-26,Self,Person - Untaught
-27-50,Self,Person - Bikkhu Higher Training
-51-74,Arahant,Not-self,Understanding
-75-98,Arahant,Not-self,Lust
-99-122,Arahant,Not-self,Hate
-123-146,Arahant,Not-self,Delusion
-147-170,Tathagata,Not-self,Understanding
-171-194,Tathagata,Not-self,Suffering - Cause,Condition for Aging,Condition for Death,Condition for Birth,Cravings - Elimination,Awakening
-
 #  These are minor topics.  "Minor" means one of a list of details supporting a major topic.
 #  There is no index of minor topics.
 3,27,51,75,99,123,147,171,Element Earth

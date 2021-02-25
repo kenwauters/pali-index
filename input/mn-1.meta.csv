@@ -1,0 +1,9 @@
+#  Sutta index files can contain comments 
+
+#  Blank lines are ignored
+
+#  Use !Title prefix for the title.  Pali goes first then English, separated by a comma
+Title: Mulapariyaya Sutta,The Root of All Things 
+
+#  Self explanatory I certainly hope
+Location: Ukkattha
