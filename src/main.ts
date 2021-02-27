@@ -16,7 +16,7 @@
  */
 
 import * as fs from 'fs';
-import { MajorTopic, MinorTopic } from './dataStructures';
+import { MajorTopic, MinorTopic, DiscourseMeta } from './dataStructures';
 import { filterLines,inputType,inputVolumeDiscourse,linkInside } from './utils'
 
 
@@ -24,11 +24,12 @@ import { filterLines,inputType,inputVolumeDiscourse,linkInside } from './utils'
  * Read all inputs and generate all output
  */
 export default function main() {
-    let { majorTopics, minorTopics } = readAndParseEverything()
+    let { majorTopics, minorTopics, discoursesMeta } = readAndParseEverything()
 
     const outDir = './output/';
     writeMajorTopics(outDir+'MajorTopics.md',majorTopics);
     writeMinorTopics(outDir+'MinorTopics.md',minorTopics);
+    writeLocations(outDir+'Locations.md',discoursesMeta);
 }
 
 function readAndParseEverything() {
@@ -36,8 +37,9 @@ function readAndParseEverything() {
     const inputs = fs.readdirSync(dir)
     const majorTopics:Array<MajorTopic> = readAndParseMajorTopics(dir,inputs);
     const minorTopics:Array<MinorTopic> = readAndParseMinorTopics(dir,inputs);
+    const discoursesMeta:Array<DiscourseMeta> = readAndParseMeta(dir,inputs);
 
-    return { majorTopics, minorTopics }
+    return { majorTopics, minorTopics, discoursesMeta }
 }
 
 function readAndParseMajorTopics(dir:string, inputs:Array<string>): Array<MajorTopic> {
@@ -93,6 +95,33 @@ function readAndParseMinorTopics(dir:string, inputs:Array<string>): Array<MinorT
         )
 }
 
+function readAndParseMeta(dir:string, inputs:Array<string>): Array<DiscourseMeta> {
+    return inputs
+        .filter(input=>inputType(input,'meta'))
+        .reduce((acc,input)=>{
+            const [ volume, discourse ] = inputVolumeDiscourse(input)
+            let titleEnglish = ''
+            let titlePali = ''
+            let location = ''
+            fs.readFileSync(dir+input,'utf8')
+                .split('\n')
+                .filter(filterLines)
+                .forEach(line=>{
+                    const [ key, value ] = line.split(":")
+                    if(key.toLowerCase()==='location') {
+                        location = value.trim();
+                    }
+                    if(key.toLowerCase()==='title') {
+                        const [ paliUntrimmed, englishUntrimmed ] = value.split(',')
+                        titleEnglish = englishUntrimmed.trim();
+                        titlePali = paliUntrimmed.trim();
+                    }
+                })
+            acc.push(new DiscourseMeta(volume,discourse,location,titleEnglish,titlePali))
+            return acc;
+        },[]
+        )
+}
 
 
 function writeMajorTopics(outFile:string, majorTopics:Array<MajorTopic>) {
@@ -176,5 +205,31 @@ function writeMinorTopics(outFile:string, minorTopics:Array<MinorTopic>) {
     },'')
 
     const textComplete = '# Minor Topics\n\n' + textBody
+    fs.writeFileSync(outFile,textComplete);
+}
+
+function writeLocations(outFile:string, discoursesMeta:Array<DiscourseMeta>) {
+    discoursesMeta.sort((a,b)=>a.location>b.location ? 1 : -1)
+
+    // extract unique list of locations
+    const locations = discoursesMeta.reduce((acc,discourse)=>{
+        if(!acc.includes(discourse.location)) {
+            acc.push(discourse.location)
+        }
+        return acc
+    },[])
+
+    // build text output
+    const textBody:string = locations.reduce((textBody,location)=>{
+        textBody+=`\n## ${location}\n`
+        textBody+= discoursesMeta
+            .filter(meta=>meta.location===location)
+            .map(meta=>`* ${meta.volume.toUpperCase()}-${meta.discourse}`)
+            .join(`\n`)
+
+        return textBody
+    },'')
+
+    const textComplete = '# Locations\n\n' + textBody
     fs.writeFileSync(outFile,textComplete);
 }
