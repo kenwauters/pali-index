@@ -16,7 +16,7 @@
  */
 
 import * as fs from 'fs';
-import { MajorTopic } from './dataStructures';
+import { MajorTopic, MinorTopic } from './dataStructures';
 import { filterLines,inputType,inputVolumeDiscourse,linkInside } from './utils'
 
 
@@ -24,18 +24,20 @@ import { filterLines,inputType,inputVolumeDiscourse,linkInside } from './utils'
  * Read all inputs and generate all output
  */
 export default function main() {
-    let { majorTopics } = readAndParseEverything()
+    let { majorTopics, minorTopics } = readAndParseEverything()
 
     const outDir = './output/';
     writeMajorTopics(outDir+'MajorTopics.md',majorTopics);
+    writeMinorTopics(outDir+'MinorTopics.md',minorTopics);
 }
 
 function readAndParseEverything() {
     const dir = './input/'
     const inputs = fs.readdirSync(dir)
     const majorTopics:Array<MajorTopic> = readAndParseMajorTopics(dir,inputs);
+    const minorTopics:Array<MinorTopic> = readAndParseMinorTopics(dir,inputs);
 
-    return { majorTopics: majorTopics}
+    return { majorTopics, minorTopics }
 }
 
 function readAndParseMajorTopics(dir:string, inputs:Array<string>): Array<MajorTopic> {
@@ -61,6 +63,36 @@ function readAndParseMajorTopics(dir:string, inputs:Array<string>): Array<MajorT
         },[]
         )
 }
+
+function readAndParseMinorTopics(dir:string, inputs:Array<string>): Array<MinorTopic> {
+    return inputs
+        .filter(input=>inputType(input,'minor'))
+        .reduce((acc,input)=>{
+            const [ volume, discourse ] = inputVolumeDiscourse(input)
+            fs.readFileSync(dir+input,'utf8')
+                .split('\n')
+                .filter(filterLines)
+                .forEach(line=>{
+                    const [ versesUnsplit, topicsUnsplit ] = line.split(':')
+                    const verses = versesUnsplit.split(',')
+                    const topics = topicsUnsplit.split(',')
+
+                    verses.forEach(verse=>{
+                        topics.forEach(topic=>{
+                            acc.push(new MinorTopic(
+                                volume.toUpperCase(),
+                                discourse,
+                                topic.trim(),
+                                parseInt(verse)
+                            ))
+                        })
+                    })
+                })
+            return acc;
+        },[]
+        )
+}
+
 
 
 function writeMajorTopics(outFile:string, majorTopics:Array<MajorTopic>) {
@@ -106,10 +138,43 @@ function writeMajorTopics(outFile:string, majorTopics:Array<MajorTopic>) {
             major.verseEnd === m.verseEnd &&
             major.topic !== m.topic
         ).map(major=>linkInside(major.topic))
-        console.log(otherTopics)
         const others = otherTopics.length === 0 ? ''
             : ` \(With: ${otherTopics.join(', ')}\)`;
 
         return `* ${m.volume}-${m.discourse}: ${m.verseBegin} - ${m.verseEnd} ${others} `
     }
+}
+
+function writeMinorTopics(outFile:string, minorTopics:Array<MinorTopic>) {
+    // Sort by topic, volume, discourse
+    minorTopics.sort((a,b)=>{
+        if(a.topic > b.topic) return 1
+        if(a.topic < b.topic) return -1
+        if(a.volume > b.volume) return 1
+        if(a.volume < b.volume) return -1
+        if(a.discourse > b.discourse) return 1
+        if(a.discourse < b.discourse) return -1
+    })
+
+    // get unique list of topics
+    const topics:Array<string> = minorTopics.reduce((acc,minor)=>{
+        if(!acc.includes(minor.topic)) {
+            acc.push(minor.topic)
+        }
+        return acc
+    },[])
+
+    // build text output
+    const textBody:string = topics.reduce((textBody,topic)=>{
+        textBody+=`\n## ${topic}\n`
+        textBody+= minorTopics
+            .filter(minor=>minor.topic===topic)
+            .map(minor=>`* ${minor.volume}-${minor.discourse}: ${minor.verse}`)
+            .join(`\n`)
+
+        return textBody
+    },'')
+
+    const textComplete = '# Minor Topics\n\n' + textBody
+    fs.writeFileSync(outFile,textComplete);
 }

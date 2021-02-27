@@ -9,16 +9,14 @@ export class MajorTopic {
     ) {}
 }
 
-/*
 export class MinorTopic {
     constructor(
         public volume: string,
-        public sutta: number,
+        public discourse: number,
         public topic: string,
         public verse: number
     ) {}
 }
-*/
 
 /*
 class Sutta {
