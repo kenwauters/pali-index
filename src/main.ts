@@ -16,7 +16,7 @@
  */
 
 import * as fs from 'fs';
-import { MajorTopic, MinorTopic, DiscourseMeta } from './dataStructures';
+import { MajorTopic, MinorTopic, StockPhrase, DiscourseMeta } from './dataStructures';
 import { filterLines,inputType,inputVolumeDiscourse,linkInside } from './utils'
 
 
@@ -24,11 +24,12 @@ import { filterLines,inputType,inputVolumeDiscourse,linkInside } from './utils'
  * Read all inputs and generate all output
  */
 export default function main() {
-    let { majorTopics, minorTopics, discoursesMeta } = readAndParseEverything()
+    let { majorTopics, minorTopics, stockPhrases, discoursesMeta } = readAndParseEverything()
 
     const outDir = './output/';
     writeMajorTopics(outDir+'MajorTopics.md',majorTopics);
     writeMinorTopics(outDir+'MinorTopics.md',minorTopics);
+    writeStockPhrases(outDir+'StockPhrases.md',stockPhrases)
     writeLocations(outDir+'Locations.md',discoursesMeta);
 }
 
@@ -37,9 +38,10 @@ function readAndParseEverything() {
     const inputs = fs.readdirSync(dir)
     const majorTopics:Array<MajorTopic> = readAndParseMajorTopics(dir,inputs);
     const minorTopics:Array<MinorTopic> = readAndParseMinorTopics(dir,inputs);
+    const stockPhrases:Array<StockPhrase> = readAndParseStockPhrases(dir,inputs);
     const discoursesMeta:Array<DiscourseMeta> = readAndParseMeta(dir,inputs);
 
-    return { majorTopics, minorTopics, discoursesMeta }
+    return { majorTopics, minorTopics, stockPhrases, discoursesMeta }
 }
 
 function readAndParseMajorTopics(dir:string, inputs:Array<string>): Array<MajorTopic> {
@@ -89,6 +91,22 @@ function readAndParseMinorTopics(dir:string, inputs:Array<string>): Array<MinorT
                             ))
                         })
                     })
+                })
+            return acc;
+        },[]
+        )
+}
+function readAndParseStockPhrases(dir:string, inputs:Array<string>): Array<StockPhrase> {
+    return inputs
+        .filter(input=>inputType(input,'stock'))
+        .reduce((acc,input)=>{
+            const [ volume, discourse ] = inputVolumeDiscourse(input)
+            fs.readFileSync(dir+input,'utf8')
+                .split('\n')
+                .filter(filterLines)
+                .forEach(line=>{
+                    const [ verse, topic ] = line.split(':')
+                    acc.push(new StockPhrase(volume,discourse,topic.trim(),parseInt(verse))) 
                 })
             return acc;
         },[]
@@ -198,7 +216,7 @@ function writeMinorTopics(outFile:string, minorTopics:Array<MinorTopic>) {
         textBody+=`\n## ${topic}\n`
         textBody+= minorTopics
             .filter(minor=>minor.topic===topic)
-            .map(minor=>`* ${minor.volume}-${minor.discourse}: ${minor.verse}`)
+            .map(minor=>`* ${minor.volume.toUpperCase()}-${minor.discourse}: ${minor.verse}`)
             .join(`\n`)
 
         return textBody
@@ -208,8 +226,51 @@ function writeMinorTopics(outFile:string, minorTopics:Array<MinorTopic>) {
     fs.writeFileSync(outFile,textComplete);
 }
 
+function writeStockPhrases(outFile:string, stockPhrases:Array<MinorTopic>) {
+    // Sort by topic, volume, discourse
+    stockPhrases.sort((a,b)=>{
+        if(a.topic > b.topic) return 1
+        if(a.topic < b.topic) return -1
+        if(a.volume > b.volume) return 1
+        if(a.volume < b.volume) return -1
+        if(a.discourse > b.discourse) return 1
+        if(a.discourse < b.discourse) return -1
+    })
+
+    // get unique list of topics
+    const topics:Array<string> = stockPhrases.reduce((acc,stock)=>{
+        if(!acc.includes(stock.topic)) {
+            acc.push(stock.topic)
+        }
+        return acc
+    },[])
+
+    // build text output
+    const textBody:string = topics.reduce((textBody,topic)=>{
+        textBody+=`\n## ${topic}\n`
+        textBody+= stockPhrases
+            .filter(phrase=>phrase.topic===topic)
+            .map(phrase=>`* ${phrase.volume.toUpperCase()}-${phrase.discourse}: ${phrase.verse}`)
+            .join(`\n`)
+
+        return textBody
+    },'')
+
+    const textComplete = '# Stock Phrases\n\n' + textBody
+    fs.writeFileSync(outFile,textComplete);
+}
+
+
 function writeLocations(outFile:string, discoursesMeta:Array<DiscourseMeta>) {
-    discoursesMeta.sort((a,b)=>a.location>b.location ? 1 : -1)
+    discoursesMeta.sort((a,b)=>{
+        if(a.location > b.location) return 1
+        if(a.location < b.location) return -1
+        if(a.volume > b.volume) return 1
+        if(a.volume < b.volume) return -1
+        if(a.discourse > b.discourse) return 1
+        if(a.discourse < b.discourse) return -1
+        return 0
+    })
 
     // extract unique list of locations
     const locations = discoursesMeta.reduce((acc,discourse)=>{

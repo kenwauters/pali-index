@@ -27,3 +27,12 @@ export class DiscourseMeta {
         public titlePali: string
     ){}
 }
+
+export class StockPhrase {
+    constructor(
+        public volume: string,
+        public discourse: number,
+        public topic: string,
+        public verse: number
+    ) {}
+}

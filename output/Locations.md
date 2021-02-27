@@ -1,7 +1,8 @@
 # Locations
 
 
-## Savatthi in Jeta's Grove, Anathapinkika's Park
+## Savatthi in Jeta's Grove, Anathapindika's Park
 * MN-2
+* MN-4
 ## Ukkattha
 * MN-1
