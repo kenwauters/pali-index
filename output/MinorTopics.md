@@ -10,6 +10,12 @@
 * MN-1: 145
 * MN-1: 169
 * MN-1: 193
+## Anger
+* MN-3: 9
+## Arrogance
+* MN-3: 14
+## Avarice
+* MN-3: 11
 ## Base of infinite consciousness
 * MN-1: 16
 * MN-1: 40
@@ -57,6 +63,15 @@
 * MN-1: 175
 ## Bikhhu and Almsfood
 * MN-3: 3
+## Bikkhu - Elder
+* MN-3: 6
+* MN-3: 7
+## Bikkhu - Middle
+* MN-3: 6
+* MN-3: 7
+## Bikkhu - New
+* MN-3: 6
+* MN-3: 7
 ## Bikkhu and Almsfood
 * MN-2: 14
 ## Bikkhu and Medicine
@@ -74,6 +89,12 @@
 * MN-1: 142
 * MN-1: 166
 * MN-1: 190
+## Conceit
+* MN-3: 14
+## Contempt
+* MN-3: 10
+## Deceit
+* MN-3: 12
 ## Deities
 * MN-1: 8
 * MN-1: 32
@@ -196,6 +217,8 @@
 * MN-2: 21
 ## Enlightment Factor of Investigation-of-states
 * MN-2: 21
+## Envy
+* MN-3: 11
 ## Fetter of Doubt
 * MN-2: 11
 ## Fetter of Personality View
@@ -206,8 +229,18 @@
 * MN-2: 8
 ## Four Noble Truths
 * MN-2: 11
+## Fraud
+* MN-3: 12
 ## Friends
 * MN-2: 19
+## Greed
+* MN-3: 8
+## Hate
+* MN-3: 8
+## Insolence
+* MN-3: 10
+## Negligence
+* MN-3: 15
 ## Nibanna
 * MN-1: 26
 * MN-1: 50
@@ -217,6 +250,12 @@
 * MN-1: 146
 * MN-1: 170
 * MN-1: 194
+## Obstinancy
+* MN-3: 13
+## Resentment
+* MN-3: 9
+## Rivalry
+* MN-3: 13
 ## Self
 * MN-2: 7
 ## Sense data
@@ -270,3 +309,5 @@
 * MN-1: 143
 * MN-1: 167
 * MN-1: 191
+## Vanity
+* MN-3: 15
