@@ -24,7 +24,8 @@ export class DiscourseMeta {
         public discourse: number,
         public location: string,
         public titleEnglish: string,
-        public titlePali: string
+        public titlePali: string,
+        public friends: Array<string>
     ){}
 }
 

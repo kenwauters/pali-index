@@ -30,6 +30,7 @@ export default function main() {
     writeMajorTopics(outDir+'MajorTopics.md',majorTopics);
     writeMinorTopics(outDir+'MinorTopics.md',minorTopics);
     writeStockPhrases(outDir+'StockPhrases.md',stockPhrases)
+    writeFriends(outDir+"Friends.md",discoursesMeta)
     writeLocations(outDir+'Locations.md',discoursesMeta);
 }
 
@@ -121,6 +122,7 @@ function readAndParseMeta(dir:string, inputs:Array<string>): Array<DiscourseMeta
             let titleEnglish = ''
             let titlePali = ''
             let location = ''
+            let friends: Array<string> = []
             fs.readFileSync(dir+input,'utf8')
                 .split('\n')
                 .filter(filterLines)
@@ -134,8 +136,11 @@ function readAndParseMeta(dir:string, inputs:Array<string>): Array<DiscourseMeta
                         titleEnglish = englishUntrimmed.trim();
                         titlePali = paliUntrimmed.trim();
                     }
+                    if(key.toLowerCase()==='friends') {
+                        friends = value.split(',').map(friend=>friend.trim())
+                    }
                 })
-            acc.push(new DiscourseMeta(volume,discourse,location,titleEnglish,titlePali))
+            acc.push(new DiscourseMeta(volume,discourse,location,titleEnglish,titlePali,friends))
             return acc;
         },[]
         )
@@ -292,5 +297,39 @@ function writeLocations(outFile:string, discoursesMeta:Array<DiscourseMeta>) {
     },'')
 
     const textComplete = '# Locations\n\n' + textBody
+    fs.writeFileSync(outFile,textComplete);
+}
+
+function writeFriends(outFile:string,discoursesMeta:Array<DiscourseMeta>) {
+    // Transpose to flat list of friends to volumes
+    const flat = discoursesMeta.reduce((acc,dm)=>{
+        dm.friends.forEach(friend=>acc.push({
+            volume: dm.volume,
+            discourse: dm.discourse,
+            friend: friend
+        }))
+        return acc
+    },[])
+
+    // extract and sort list of friends
+    const friends = flat.reduce((acc,flatItem)=>{
+        if(!acc.includes(flatItem.friend)) {
+            acc.push(flatItem.friend)
+        } 
+        return acc
+    },[]).sort()
+
+    // build text body
+    const textBody:string = friends.reduce((textBody,friend)=>{
+        textBody+=`\n## ${friend}\n`
+        textBody+= discoursesMeta
+            .filter(meta=>meta.friends.includes(friend))
+            .map(meta=>`* ${meta.volume.toUpperCase()}-${meta.discourse}`)
+            .join(`\n`)
+
+        return textBody
+    },'')
+
+    const textComplete = '# Friends\n\n' + textBody
     fs.writeFileSync(outFile,textComplete);
 }

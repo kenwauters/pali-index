@@ -12,6 +12,8 @@ The indexes are:
   verses and is explained with specific examples in each verse.
 * [List of Minor Topics](output/MinorTopics.md): A minor topic is an illustrative example, often
   in a list of other minor topics, to illustrate a major topic.
+* [List of Stock Phrases](output/StockPhrases.md): phrases repeated word-for-word or nearly so in multiple discources.
+* [List of Friends](output/Friends.md): Close followers of the Buddha.
 * [List of Locations](output/Locations.md)
 
 ## Sources

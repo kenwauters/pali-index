@@ -55,6 +55,8 @@
 * MN-1: 127
 * MN-1: 151
 * MN-1: 175
+## Bikhhu and Almsfood
+* MN-3: 3
 ## Bikkhu and Almsfood
 * MN-2: 14
 ## Bikkhu and Medicine
